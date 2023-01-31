@@ -1,0 +1,105 @@
+paket sesi12;
+
+impor javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+import java.util.Random;
+
+Kuis kelas publik memperluas JFrame mengimplementasikan ActionListener {
+    
+    int x,y;
+    masukan JTextField3 = new JTextField();
+    JLabel ket = new JLabel();
+    JPanel dsp;
+
+    Ulangan(){
+        super("Kuis dadakan");
+        setUkuran(450, 200);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setLayout(null);
+
+        
+        //panel tampilan
+        FlowLayout fl = FlowLayout baru(FlowLayout.LEFT);
+        dsp = JPanel baru (fl);
+        dsp.setBounds(0, 0, 450, 75);
+        dsp.setOpaque(false);
+
+        setRandom();
+        
+        Ikon JLabel = new JLabel("=");
+        dsp.tambahkan(ikon);
+
+        dsp.tambahkan(input3);
+        input3.setPreferredSize(Dimensi baru(125, 50));
+        tambahkan(dsp);
+        
+        //memeriksa
+        JPanel btnpanel = JPanel baru(FlowLayout baru(FlowLayout.LEFT));
+        btnpanel.setBounds(0, 75, 450, 75);
+        btnpanel.setOpaque(false);;
+        
+        JButton periksa = new JButton("Periksa");
+        check.setPreferredSize(Dimensi baru(250,30));
+        btnpanel.tambahkan(periksa);
+
+        tambahkan(btnpanel);
+
+        ket.setBounds(20, 125, 450, 30);
+        tambah(ket);
+
+        // daftar
+        check.addActionListener(ini);
+
+        setVisible(benar);
+    }
+
+    public void setRandom(){
+
+        Rand acak = Acak baru();
+        x = rand.nextInt(10);
+        y = rand.nextInt(10);
+
+        masukan JTextField1 = new JTextField();
+        input1.setText(Integer.toString(x));
+        dsp.tambahkan(input1);
+        input1.setPreferredSize(Dimensi baru(125, 50));
+        input1.setEditable(false);
+
+        masukan JTextField2 = new JTextField();
+        input2.setText(Integer.toString(y));
+        dsp.tambahkan(input2);
+        input2.setPreferredSize(Dimensi baru(125, 50));
+        input2.setEditable(false);
+    }
+
+    public static void main(String[] args) {
+        Kuis edlink = Kuis baru();
+    }
+
+    @Mengesampingkan
+    public void actionPerformed(ActionEvent e) {
+        // TODO rintisan metode yang dihasilkan secara otomatis
+
+        mencoba {
+
+            int hasil = Integer.parseInt(input3.getText());
+            
+            if(x + y == hasil){
+                getContentPane().setBackground(Warna.hijau);
+                ket.setText("Selamat jawaban anda benar!!!");
+            }
+            kalau tidak{
+                getContentPane().setBackground(Color.red);
+                ket.setText("Maaf, Jawaban anda salah!!!");
+
+            }
+            
+        } tangkap (Pengecualian p) {
+            //TODO: menangani masalah
+            System.out.println(p.getMessage());
+        }
+        
+    }
+    
+}
